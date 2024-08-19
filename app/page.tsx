@@ -78,7 +78,14 @@ import {
 } from "@/components/ui/tooltip"
 import { Sidebar } from "./components/Sidebar"
 import Navbar from "./components/Navbar"
-export default function HomePage() {
+import SignUpPage from "./(auth)/sign-up/[[...sign-up]]/page"
+import { currentUser } from "@clerk/nextjs/server"
+import Guests from "./components/Guest"
+export default async function HomePage() {
+  const user = await currentUser()
+  if (!user) {
+    return <Guests />
+  }
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <Sidebar />
@@ -526,3 +533,5 @@ export default function HomePage() {
     </div>
   )
 }
+
+
