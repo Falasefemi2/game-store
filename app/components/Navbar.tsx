@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import Image from "next/image"
 import { Input } from "@/components/ui/input"
+import { SignedIn, UserButton } from "@clerk/nextjs"
 
 export default function Navbar() {
     return (
@@ -101,31 +102,9 @@ export default function Navbar() {
                         className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
                     />
                 </div>
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button
-                            variant="outline"
-                            size="icon"
-                            className="overflow-hidden rounded-full"
-                        >
-                            <Image
-                                src="/placeholder-user.jpg"
-                                width={36}
-                                height={36}
-                                alt="Avatar"
-                                className="overflow-hidden rounded-full"
-                            />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>Settings</DropdownMenuItem>
-                        <DropdownMenuItem>Support</DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>Logout</DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
+                <SignedIn>
+                    <UserButton />
+                </SignedIn>
             </header>
         </>
     )
