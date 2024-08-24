@@ -16,8 +16,10 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { SignedIn, UserButton } from "@clerk/nextjs"
+import { UserButton } from "@clerk/nextjs"
 import SearchBar from "../Search"
+
+
 
 function Navbar() {
     return (
@@ -86,9 +88,12 @@ function Navbar() {
                     </BreadcrumbList>
                 </Breadcrumb>
                 <SearchBar />
-                <SignedIn>
-                    <UserButton />
-                </SignedIn>
+                <UserButton
+                    afterSignOutUrl="/"
+                    userProfileMode="navigation"
+                    userProfileUrl="/user-profile"
+                />
+
             </header>
         </>
     )

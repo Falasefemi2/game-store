@@ -1,5 +1,5 @@
 /** @format */
 
-"use server";
+// "use server";
 
-export async function getThumbnails() {}
+// export async function getThumbnails() {}
