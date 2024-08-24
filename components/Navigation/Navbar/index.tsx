@@ -18,10 +18,13 @@ import {
 } from "@/components/ui/breadcrumb"
 import { UserButton } from "@clerk/nextjs"
 import SearchBar from "../Search"
+import { CheckUser } from "@/lib/checkuser"
 
 
 
-function Navbar() {
+async function Navbar() {
+    const user = await CheckUser()
+
     return (
         <>
             <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
@@ -88,11 +91,21 @@ function Navbar() {
                     </BreadcrumbList>
                 </Breadcrumb>
                 <SearchBar />
-                <UserButton
+                {/* <UserButton
                     afterSignOutUrl="/"
                     userProfileMode="navigation"
                     userProfileUrl="/user-profile"
-                />
+                /> */}
+                {user ? (
+                    <UserButton
+                        afterSignOutUrl="/"
+                        userProfileMode="navigation"
+                        userProfileUrl="/user-profile"
+                    />
+                ) : (
+                    <Link href="/sign-in">Sign In</Link>
+                )}
+
 
             </header>
         </>
