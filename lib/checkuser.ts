@@ -28,7 +28,8 @@ export async function CheckUser() {
       const newUser = {
         authId: user.id,
         email: user.emailAddresses[0]?.emailAddress ?? "",
-        profileImageUrl: user.imageUrl ?? "",
+        profilePictureUrl: user.imageUrl ?? "",
+        username: user.username ?? `user_${user.id}`, // Generate a username if not provided
         firstName: user.firstName ?? "",
         lastName: user.lastName ?? "",
       };
