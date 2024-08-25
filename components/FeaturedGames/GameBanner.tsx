@@ -1,9 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import React, { useEffect, useState } from "react";
+import {
+    Carousel,
+    CarouselMainContainer,
+    SliderMainItem,
+} from "@/components/ui/Carousel"
+import AutoScroll from "embla-carousel-auto-scroll";
+import Image from "next/image";
 
-import { getSevenGameThumbnails } from "@/app/action/get-game-banner";
 
 type Game = {
     id: number;
@@ -11,48 +16,45 @@ type Game = {
     thumbnail: string;
 };
 
-
-
-function GameBanner() {
-    const [games, setGames] = useState<Game[]>([]); // Explicitly define the type
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null); // Define error type
-
-
-    useEffect(() => {
-        async function fetchThumbnails() {
-            try {
-                const gameThumbnails = await getSevenGameThumbnails();
-                setGames(gameThumbnails);
-            } catch (err) {
-                if (err instanceof Error) {
-                    setError(err.message);
-                } else {
-                    setError("An unknown error occurred");
-                }
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        fetchThumbnails();
-    }, []);
-
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
+type GameBannerProps = {
+    gamesbanner: Game[];
+};
 
 
 
+function GameBanner({ gamesbanner }: GameBannerProps) {
     return (
         <>
-            <div className="game-thumbnails">
-                {games.map((game) => (
-                    <div key={game.id} className="game">
-                        <img src={game.thumbnail} alt={game.title} />
-                        <h3>{game.title}</h3>
-                    </div>
-                ))}
-            </div>
+            <Carousel
+                plugins={[
+                    AutoScroll({
+                        speed: 1,
+                    }),
+                ]}
+                carouselOptions={{
+                    loop: true,
+                }}
+            >
+                <CarouselMainContainer className="h-60 md:h-80 lg:h-96">
+                    {gamesbanner.map((game) => (
+                        <SliderMainItem key={game.id} className="bg-transparent">
+                            <div className="relative w-full h-full flex items-center justify-center rounded-xl overflow-hidden">
+                                <Image
+                                    src={game.thumbnail}
+                                    alt={game.title}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    quality={100}
+                                    className="rounded-xl w-full h-full object-cover"
+                                />
+                                <div className="absolute bottom-4 left-4">
+                                    <h3 className="text-white text-3xl font-bold">{game.title}</h3>
+                                </div>
+                            </div>
+                        </SliderMainItem>
+                    ))}
+                </CarouselMainContainer>
+            </Carousel>
 
         </>
     )
