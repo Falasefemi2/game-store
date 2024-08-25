@@ -22,6 +22,13 @@
       "when": 1724583872800,
       "tag": "0002_last_king_bedlam",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1724584590072,
+      "tag": "0003_deep_bushwacker",
+      "breakpoints": true
     }
   ]
 }

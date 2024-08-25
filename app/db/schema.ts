@@ -19,7 +19,7 @@ export const users = pgTable("users", {
   authId: varchar("auth_id", { length: 256 }).notNull().unique(),
   email: varchar("email", { length: 256 }).notNull().unique(),
   profilePictureUrl: varchar("profile_picture_url", { length: 256 }),
-  username: varchar("username", { length: 256 }).unique(),
+  username: varchar("username", { length: 256 }).notNull().unique(),
   firstName: varchar("first_name", { length: 256 }),
   lastName: varchar("last_name", { length: 256 }),
   createdAt: timestamp("created_at").defaultNow(),
@@ -27,6 +27,17 @@ export const users = pgTable("users", {
 
 export const usersRelations = relations(users, ({ many }) => ({
   gameLibrary: many(gameLibrary),
+}));
+
+export const platforms = pgTable("platforms", {
+  id: serial("id").primaryKey(),
+  name: varchar("name", { length: 50 }).notNull().unique(),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const platformsRelations = relations(platforms, ({ many }) => ({
+  games: many(games),
 }));
 
 export const games = pgTable(
@@ -38,7 +49,9 @@ export const games = pgTable(
     shortDescription: text("short_description").notNull(),
     gameUrl: text("game_url").notNull(),
     genre: text("genre").notNull(),
-    platform: text("platform").notNull(),
+    platformId: integer("platform_id")
+      .notNull()
+      .references(() => platforms.id),
     publisher: text("publisher").notNull(),
     developer: text("developer").notNull(),
     releaseDate: text("release_date").notNull(),
@@ -50,11 +63,15 @@ export const games = pgTable(
   (table) => ({
     titleIdx: uniqueIndex("title_idx").on(table.title),
     genreIdx: index("genre_idx").on(table.genre),
-    platformIdx: index("platform_idx").on(table.platform),
+    platformIdx: index("platform_idx").on(table.platformId),
   })
 );
 
-export const gamesRelations = relations(games, ({ many }) => ({
+export const gamesRelations = relations(games, ({ one, many }) => ({
+  platform: one(platforms, {
+    fields: [games.platformId],
+    references: [platforms.id],
+  }),
   gameLibrary: many(gameLibrary),
 }));
 
@@ -67,7 +84,7 @@ export const gameLibrary = pgTable("game_library", {
     .notNull()
     .references(() => games.id),
   addedAt: timestamp("added_at").defaultNow(),
-  status: varchar("status", { length: 20 }).default("added"), // e.g., 'added', 'playing', 'completed'
+  status: varchar("status", { length: 20 }).default("added"),
   notes: text("notes"),
 });
 
