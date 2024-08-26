@@ -21,23 +21,6 @@ interface PaginatedGames {
   };
 }
 
-// export async function getTopGames() {
-//   try {
-//     const allGames = await db
-//       .select({
-//         id: games.id,
-//         title: games.title,
-//         thumbnail: games.thumbnail,
-//       })
-//       .from(games);
-
-//     return allGames;
-//   } catch (error) {
-//     console.error("Error fetching all games:", error);
-//     throw new Error("Failed to fetch all games");
-//   }
-// }
-
 export async function getPaginatedGames(
   page: number = 1,
   pageSize: number = 12
