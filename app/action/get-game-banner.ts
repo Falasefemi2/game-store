@@ -12,6 +12,7 @@ export async function getSevenGameThumbnails() {
         id: games.id,
         title: games.title,
         thumbnail: games.thumbnail,
+        description: games.shortDescription,
       })
       .from(games)
       .limit(7);
