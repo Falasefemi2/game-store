@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/Carousel"
 import AutoScroll from "embla-carousel-auto-scroll";
 import Image from "next/image";
+import { Button } from "../ui/button";
 
 
 
@@ -66,7 +67,10 @@ function GameBanner({ gamesbanner }: GameBannerProps) {
                                 {/* Content overlay */}
                                 <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black to-transparent">
                                     <h3 className="text-white text-3xl font-bold mb-2 truncate">{game.title}</h3>
-                                    <h2 className="text-white text-lg line-clamp-2">{game.description}</h2>
+                                    <h2 className="text-white text-lg line-clamp-2 mb-4">{game.description}</h2>
+                                    <Button className="self-start font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105">
+                                        Buy Now
+                                    </Button>
                                 </div>
                             </div>
                         </SliderMainItem>
