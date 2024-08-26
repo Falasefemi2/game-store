@@ -6,6 +6,7 @@ import GameBanner from "@/components/FeaturedGames/GameBanner"
 import { Suspense } from 'react'
 import { getSevenGameThumbnails } from "./action/get-game-banner";
 import GameSkeleton from "@/components/FeaturedGames/GameSkeleton";
+import TopFreeGame from "@/components/FeaturedGames/TopFreeGame";
 
 
 export default async function HomePage() {
@@ -24,6 +25,7 @@ export default async function HomePage() {
           <Suspense fallback={<GameSkeleton />}>
             <GameBanner gamesbanner={gamesbanner} />
           </Suspense>
+          <TopFreeGame />
         </main>
       </div>
     </div>
