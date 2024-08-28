@@ -33,17 +33,8 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider appearance={clerkAppearance}>
-      <html lang="en" suppressHydrationWarning>
-        <body className={inter.className}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
-        </body>
+      <html lang="en" suppressHydrationWarning className="bg-epic-500">
+        <body className={inter.className}>{children}</body>
       </html>
     </ClerkProvider>
   );
