@@ -39,6 +39,7 @@ export default async function HomePage({ searchParams }: PageProps) {
 }
 
 
+
 function TopgameLoading() {
   return (
     <div>
@@ -46,7 +47,7 @@ function TopgameLoading() {
       <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {[...Array(12)].map((_, i) => (
           <div key={i} className="relative border rounded-lg overflow-hidden shadow-lg group">
-            <div className="w-full h-48 bg-gray-300 animate-pulse"></div>
+            <div className="w-full h-64 bg-gray-300 animate-pulse"></div>
             <div className="absolute inset-0 bg-black opacity-0"></div>
             <div className="p-4">
               <div className="h-6 bg-gray-300 rounded w-3/4 animate-pulse"></div>

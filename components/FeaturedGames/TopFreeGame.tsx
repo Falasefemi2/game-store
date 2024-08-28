@@ -19,10 +19,12 @@ export default async function TopFreeGame({ searchParams }: PageProps) {
                 {games.map((game) => (
                     <Link href={`/game/${game.id}`} key={game.id}>
                         <div className="relative border rounded-lg overflow-hidden shadow-lg group">
+
                             <Image
                                 src={game.thumbnail}
                                 alt={game.title}
-                                className="w-full h-full object-cover transition duration-300 ease-in-out transform group-hover:scale-105"
+                                className="w-full h-64 object-cover transition duration-300 ease-in-out transform group-hover:scale-105"
+
                                 width={400}
                                 height={300}
                             />
