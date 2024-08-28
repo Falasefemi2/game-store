@@ -41,25 +41,27 @@ export default async function HomePage({ searchParams }: PageProps) {
 
 function TopgameLoading() {
   return (
-    <>
+    <div>
+      <h1 className="font-medium text-2xl my-6 mt-16">TOP FREE GAMES</h1>
       <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {[...Array(12)].map((_, i) => (
-          <div key={i} className="border rounded-lg overflow-hidden shadow-lg animate-pulse">
-            <div className="bg-gray-300 w-full h-48"></div>
+          <div key={i} className="relative border rounded-lg overflow-hidden shadow-lg group">
+            <div className="w-full h-48 bg-gray-300 animate-pulse"></div>
+            <div className="absolute inset-0 bg-black opacity-0"></div>
             <div className="p-4">
-              <div className="h-4 bg-gray-300 rounded w-3/4 mb-2"></div>
-              <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+              <div className="h-6 bg-gray-300 rounded w-3/4 animate-pulse"></div>
             </div>
           </div>
         ))}
       </div>
+
       <div className="mt-8 flex justify-center items-center space-x-4">
         <div className="w-24 h-10 bg-gray-300 rounded animate-pulse"></div>
         <div className="w-32 h-6 bg-gray-300 rounded animate-pulse"></div>
         <div className="w-24 h-10 bg-gray-300 rounded animate-pulse"></div>
       </div>
-    </>
-  )
+    </div>
+  );
 }
 
 
