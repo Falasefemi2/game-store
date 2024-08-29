@@ -24,7 +24,7 @@ export default async function SearchPage({ searchParams }: { searchParams: { q?:
                         <Image src={game.thumbnail} alt={game.title} className="w-full h-48 object-cover mb-2" width={500} height={500} />
                         <h2 className="text-xl font-semibold">{game.title}</h2>
                         <p className="text-sm text-gray-600">{game.genre}</p>
-                        <p className="mt-2">{game.shortDescription}</p>
+                        <p className="mt-2 line-clamp-1">{game.shortDescription}</p>
                     </Link>
                 ))}
             </div>
