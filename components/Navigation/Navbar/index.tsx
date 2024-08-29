@@ -94,7 +94,7 @@ async function Navbar() {
                     </div>
                 </div>
                 <div className="flex-1 mx-4 sm:mx-0">
-                    <SearchBar />
+                    <SearchBar basePath="search" />
                 </div>
                 <div>
                     {user ? (
