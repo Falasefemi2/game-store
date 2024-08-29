@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */
+
 
 
 
@@ -16,12 +16,17 @@ export default async function SearchPage({ searchParams }: { searchParams: { q?:
 
     return (
         <div className="container mx-auto px-4">
-            <h1 className="text-2xl font-bold mb-4">Search Results for "{query}"</h1>
+            <h1 className="text-2xl font-bold mb-4">Search Results for {`${query}`}</h1>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {searchResults.results.map((game) => (
                     <Link href={`/game/${game.id}`} key={game.id} className="border p-4 rounded-lg cursor-pointer">
-                        <Image src={game.thumbnail} alt={game.title} className="w-full h-48 object-cover mb-2" width={500} height={500} />
+                        <div className="relative">
+
+                            <Image src={game.thumbnail} alt={game.title} className="w-full h-48 object-cover mb-2" width={500} height={500} />
+                            <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                        </div>
+
                         <h2 className="text-xl font-semibold">{game.title}</h2>
                         <p className="text-sm text-gray-600">{game.genre}</p>
                         <p className="mt-2 line-clamp-1">{game.shortDescription}</p>
@@ -50,3 +55,5 @@ export default async function SearchPage({ searchParams }: { searchParams: { q?:
         </div>
     );
 }
+
+

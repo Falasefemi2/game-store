@@ -13,7 +13,6 @@ type Platform = {
 type Game = {
     id: number
     title: string
-    // Add other game properties as needed
 }
 
 export function PlatformToggle({ platform }: { platform: Platform }) {
@@ -30,7 +29,6 @@ export function PlatformToggle({ platform }: { platform: Platform }) {
                 setGames(result.data ?? [])
             } else {
                 console.error(result.error)
-                // Handle error (e.g., show an error message to the user)
             }
         } else {
             setGames([])

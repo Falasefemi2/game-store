@@ -23,12 +23,8 @@ export default async function HomePage({ searchParams }: PageProps) {
   return (
     <>
       <main className="flex flex-1 flex-col items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
-        <Suspense fallback={<GameSkeleton />}>
-          <GameBanner gamesbanner={gamesbanner} />
-        </Suspense>
-        <Suspense fallback={<TopgameLoading />}>
-          <TopFreeGame searchParams={searchParams} />
-        </Suspense>
+        <GameBanner gamesbanner={gamesbanner} />
+        <TopFreeGame searchParams={searchParams} />
       </main>
 
     </>

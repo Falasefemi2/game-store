@@ -19,7 +19,9 @@ import {
 import { UserButton } from "@clerk/nextjs"
 import SearchBar from "../Search"
 import { CheckUser } from "@/lib/checkuser"
+import Image from "next/image"
 
+import logo from "../../../public/epic-games-2.svg"
 
 
 async function Navbar() {
@@ -38,13 +40,8 @@ async function Navbar() {
                         </SheetTrigger>
                         <SheetContent side="left" className="sm:max-w-xs">
                             <nav className="grid gap-6 text-lg font-medium">
-                                <Link
-                                    href="/"
-                                    className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
-                                >
-                                    <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
-                                    <span className="sr-only">Game Store</span>
-                                </Link>
+                                <Image src={logo} alt="logo" className="" width={20} height={20} />
+
                                 <Link
                                     href="/"
                                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
