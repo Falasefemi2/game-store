@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from '@clerk/themes'
-import Head from "next/head";
+import { Toaster } from "@/components/ui/sonner"
+
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -37,12 +37,9 @@ export default function RootLayout({
   return (
     <ClerkProvider appearance={clerkAppearance}>
       <html lang="en" suppressHydrationWarning className="bg-epic-500">
-        <Head>
-          <link rel="icon" href="/epic-games-2.svg" />
-          <link rel="apple-touch-icon" href="/epic-games-2.svg" />
-        </Head>
         <body className={inter.className}>
           {children}
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>
