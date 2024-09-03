@@ -1,8 +1,8 @@
 import { getPaginatedGames } from '@/app/action/get-top-game';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '../ui/button';;
-import ToggleLibraryButton from '../adddelete';
+import { Button } from '../ui/button';
+import AddToLibraryButton from '../addToGame';
 
 
 interface PageProps {
@@ -33,7 +33,11 @@ export default async function TopFreeGame({ searchParams }: PageProps) {
                             <div className="p-4">
                                 <h2 className="font-medium text-xl mb-2 line-clamp-1">{game.title}</h2>
                             </div>
-                            <ToggleLibraryButton gameId={game.id} isInLibrary />
+
+
+                            <AddToLibraryButton gameId={game.id} />
+
+
                         </div>
                     </Link>
                 ))}
