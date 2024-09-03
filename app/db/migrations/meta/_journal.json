@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1724539441676,
-      "tag": "0000_moaning_chamber",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1724541919297,
-      "tag": "0001_demonic_maddog",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1724583872800,
-      "tag": "0002_last_king_bedlam",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1724584590072,
-      "tag": "0003_deep_bushwacker",
+      "when": 1725348960697,
+      "tag": "0000_concerned_multiple_man",
       "breakpoints": true
     }
   ]

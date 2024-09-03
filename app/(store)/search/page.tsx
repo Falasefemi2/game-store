@@ -15,6 +15,8 @@ export default async function SearchPage({ searchParams }: { searchParams: { q?:
 
     const searchResults = await searchGames(query, currentPage, pageSize);
 
+
+
     return (
         <div className="container mx-auto px-4">
             <h1 className="text-2xl font-bold mb-4">Search Results for {`${query}`}</h1>

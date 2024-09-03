@@ -4,6 +4,7 @@
 
 import { eq } from "drizzle-orm";
 import { db } from "../db";
+import { games, platforms } from "../db/schema";
 
 export async function getGamePlatform(platformId: number) {
   try {
