@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 
 
 
@@ -23,7 +24,7 @@ export default async function SearchPage({ searchParams }: { searchParams: { q?:
                     <Link href={`/game/${game.id}`} key={game.id} className="border p-4 rounded-lg cursor-pointer">
                         <div className="relative">
 
-                            <Image src={game.thumbnail} alt={game.title} className="w-full h-48 object-cover mb-2" width={500} height={500} />
+                            <img src={game.thumbnail} alt={game.title} className="w-full h-64 object-cover rounded-lg shadow-lg group-hover:shadow-xl" />
                             <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                         </div>
 
